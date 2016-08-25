@@ -37,7 +37,7 @@ delay_ms(500);
 motor_m1_off(0,0);
 motor_m2_off(0,0);
  }
-else  if(ch == '03')                                      //
+else  if(ch == '03')                                      //up
  {
 motor_m2_on(150,1);                            //1=forward,0=reverse
 delay_ms(500);     
@@ -45,7 +45,7 @@ motor_m1_off(0,0);
 motor_m2_off(0,0);
   }
 
-else if(ch == '04')                                      //
+else if(ch == '04')                                      //down
  {
  motor_m2_on(150,0);                            //1=forward,0=reverse
  delay_ms(500);     
@@ -53,21 +53,21 @@ else if(ch == '04')                                      //
  motor_m2_off(0,0);
  }
  
- else if(ch == '05')                                      //
+ else if(ch == '05')                                      //forward
  {
  motor_m3_on(150,1);                            //1=forward,0=reverse
  delay_ms(500);     
  motor_m3_off(0,0);
   }  
  
- else if(ch == '06')                                      //
+ else if(ch == '06')                                      //backward
  {
 motor_m4_on(150,0);                            //1=forward,0=reverse
 delay_ms(500);     
 motor_m3_off(0,0);
 }
 
-else if(ch == '07')                                      //
+else if(ch == '07')                                      
  {
 motor_m3_on(150,0);                            //1=forward,0=reverse
 motor_m1_off(0,0);

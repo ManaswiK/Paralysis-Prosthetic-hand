@@ -1,94 +1,85 @@
-
-#include <16F876.h>
-
-#include <Dc motor.c>
-
-#include <Hm2007.c>
-
-#fuses NOWDT, HS, PROTECT
-
-#use delay(clock=20M) 
-
-
-void main()
-{
-
-unsigned char ch;
-      
-   output_high(PIN_C4);
-   delay_ms(500);      
-   output_low(PIN_C4);
-   delay_ms(500);           
-   output_high(PIN_C4);
-   delay_ms(500);      
-   output_low(PIN_C4);
-   delay_ms(500);   
-   
-   
-   do
-   {
-         ch = getc();
-         if(ch == '01')                                                // close
-         {
-             motor_m1_on(150,1);                            //1=forward,0=reverse
-             output_high(PIN_C4);
-             delay_ms(500);     
-             motor_m2_off(0,0);
-             motor_m3_off(0,0);
-         }
-   
-          else if(ch == '02')                                       //open
-         {
-             motor_m1_on(150,0);                            //1=forward,0=reverse
-             delay_ms(500);     
-             motor_m1_off(0,0);
-             motor_m2_off(0,0);
-         }
 
-         else  if(ch == '03')                                      //
-         {
-             motor_m2_on(150,1);                            //1=forward,0=reverse
-              delay_ms(500);     
-             motor_m1_off(0,0);
-             motor_m2_off(0,0);
-         }
-
-          else if(ch == '04')                                      //
-         {
-             motor_m2_on(150,0);                            //1=forward,0=reverse
-             delay_ms(500);     
-             motor_m1_off(0,0);
-             motor_m2_off(0,0);
-         }
-
-         else if(ch == '05')                                      //
-         {
-             motor_m3_on(150,1);                            //1=forward,0=reverse
-             delay_ms(500);     
-             motor_m3_off(0,0);
-             
-         }  
 
-        else if(ch == '06')                                      //
-         {
-             motor_m4_on(150,0);                            //1=forward,0=reverse
-             delay_ms(500);     
-             motor_m3_off(0,0);
-             
-         }
-         else if(ch == '07')                                      //
-         {
-             motor_m3_on(150,0);                            //1=forward,0=reverse
-             motor_m1_off(0,0);
-             motor_m2_off(0,0);
-         }
+#include <16F876.h>
+#include <Dc motor.c>
+#include <Hm2007.c>
+#fuses NOWDT, HS, PROTECT
+#use delay(clock=20M) 
 
-        else 
-         
-        {
-        output_c(0*00);
-        output_d(0*00);
-        output_b(0*00);
-        output_a(0*00);
-        }
-        }while(true);
+void main()
+{
+unsigned char ch;
+output_high(PIN_C4);
+delay_ms(500);      
+output_low(PIN_C4);
+delay_ms(500);           
+output_high(PIN_C4);
+delay_ms(500);      
+output_low(PIN_C4);
+delay_ms(500);   
+
+ do
+{
+ch = getc();
+if(ch == '01')                                                // close
+ {
+motor_m1_on(150,1);                            //1=forward,0=reverse
+output_high(PIN_C4);
+delay_ms(500);     
+motor_m2_off(0,0);
+motor_m3_off(0,0);
+  }
+
+ else if(ch == '02')                                       //open
+ {
+motor_m1_on(150,0);                            //1=forward,0=reverse
+delay_ms(500);     
+motor_m1_off(0,0);
+motor_m2_off(0,0);
+ }
+else  if(ch == '03')                                      //
+ {
+motor_m2_on(150,1);                            //1=forward,0=reverse
+delay_ms(500);     
+motor_m1_off(0,0);
+motor_m2_off(0,0);
+  }
+
+else if(ch == '04')                                      //
+ {
+ motor_m2_on(150,0);                            //1=forward,0=reverse
+ delay_ms(500);     
+ motor_m1_off(0,0);
+ motor_m2_off(0,0);
+ }
+ 
+ else if(ch == '05')                                      //
+ {
+ motor_m3_on(150,1);                            //1=forward,0=reverse
+ delay_ms(500);     
+ motor_m3_off(0,0);
+  }  
+ 
+ else if(ch == '06')                                      //
+ {
+motor_m4_on(150,0);                            //1=forward,0=reverse
+delay_ms(500);     
+motor_m3_off(0,0);
+}
+
+else if(ch == '07')                                      //
+ {
+motor_m3_on(150,0);                            //1=forward,0=reverse
+motor_m1_off(0,0);
+motor_m2_off(0,0);
+ }
+ 
+ else 
+{
+ output_c(0*00);
+ output_d(0*00);
+ output_b(0*00);
+ output_a(0*00);
+ }
+ }while(true);
+
